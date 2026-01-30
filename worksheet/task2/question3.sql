@@ -3,5 +3,10 @@
 -- DepartmentName, TotalEnrolments
 SELECT 
     DepartmentName, 
-    TotalEnrolments, 
-    
+    COUNT(*) AS TotalEnrolments
+FROM Department
+JOIN Course
+    ON Course.DepartmentId = Department.DepartmentId
+JOIN Enrolment 
+    ON Enrolment.CourseId = Course.CourseId
+GROUP BY DepartmentName;
